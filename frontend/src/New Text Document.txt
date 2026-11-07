@@ -1,0 +1,7 @@
+Penjelasannya:
+- main.jsx: titik awal aplikasi React.
+- App.jsx: komponen utama aplikasi.
+- App.css: styling komponen.
+- index.css: styling global.
+- assets: gambar, logo, dan aset lain.
+- package.json: daftar dependensi dan perintah proyek.

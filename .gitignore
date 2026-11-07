@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Node
+node_modules/
+dist/
+
+# Environment
+.env
+.env.*
+
+# Allow example env
+!.env.example
+
+# IDE
+.vscode/
+
+# Database local files
+*.db
+*.sqlite3
+
+# OS
+.DS_Store
+Thumbs.db
