@@ -1,17 +1,18 @@
 # Bengkelyu
 project aplikasi manajemen bengkel berbasis web
 
-# Bengkelyu
-
-Workshop Management System.
-
 ## Technology Stack
 
+----Front end
 - React
 - Vite
 - Tailwind CSS
+
+----Back End
 - Python
 - FastAPI
+
+----Database
 - PostgreSQL
 
 ## Project Structure
@@ -28,4 +29,3 @@ Workshop Management System.
 - Mechanic Management
 - Inventory Management
 - Cashflow Management
-#vehicle Management
