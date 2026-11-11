@@ -1,16 +1,66 @@
-# React + Vite
+# Bengkelyu Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Frontend React + Vite untuk aplikasi manajemen bengkel Bengkelyu.
 
-Currently, two official plugins are available:
+## Fitur
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Dashboard ringkasan pendapatan, order aktif, pelanggan, dan stok menipis
+- Order servis: buat order, cari/filter status, lihat detail, ubah status
+- Pelanggan: data kontak, kendaraan, riwayat order, dan total belanja
+- Mekanik: beban kerja, status aktif/libur, rating, dan kontak
+- Sparepart: stok, nilai persediaan, status stok, dan penyesuaian stok
+- Pembayaran: catat pembayaran, tagihan pending, dan tandai lunas
+- Arus kas: pemasukan/pengeluaran, grafik 7 hari, dan saldo bulan ini
+- Login/registrasi terhubung ke Laravel Sanctum
+- Mode demo tanpa backend dengan data contoh yang tersimpan di localStorage
+- Tampilan responsif untuk desktop dan mobile
 
-## React Compiler
+## Prasyarat
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js `20.19+` atau `22.12+` (disarankan Node 22 LTS)
+- Backend Laravel opsional; tanpa backend tetap bisa memakai mode demo
 
-## Expanding the Oxlint configuration
+## Menjalankan
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```sh
+npm install
+cp .env.example .env
+npm run dev
+```
+
+Buka `http://localhost:5173`.
+
+Di halaman login, klik **Coba mode demo** untuk mencoba seluruh modul dengan
+data contoh. Data demo disimpan di localStorage dan bisa dikembalikan ke kondisi
+awal lewat tombol **Reset data demo** di sidebar.
+
+Vite meneruskan request `/api/*` ke backend Laravel. Jika backend berada di
+alamat lain, ubah `VITE_API_URL` di `.env`, misalnya:
+
+```env
+VITE_API_URL=http://127.0.0.1:8000/api
+```
+
+## Endpoint yang dipakai
+
+| Method | Endpoint               | Keterangan                    |
+| ------ | ---------------------- | ----------------------------- |
+| POST   | `/api/auth/register`   | Registrasi akun baru          |
+| POST   | `/api/auth/login`      | Login dan mendapatkan token   |
+| GET    | `/api/auth/me`         | Mengambil data user aktif     |
+| POST   | `/api/auth/logout`     | Menghapus token aktif         |
+
+Semua endpoint yang butuh autentikasi mengirim header
+`Authorization: Bearer <token>`.
+
+Modul operasional saat ini memakai data demo lokal. Ketika endpoint backend
+untuk order, pelanggan, mekanik, sparepart, pembayaran, dan arus kas sudah
+tersedia, data di `src/context/DataProvider.jsx` bisa diganti dengan pemanggilan
+API tanpa mengubah komponen halaman.
+
+## Build
+
+```sh
+npm run build
+npm run preview
+```
